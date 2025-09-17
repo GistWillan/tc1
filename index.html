@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服务器维护</title>
+    <!-- 引入 Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 使用自定义字体 */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* 自定义提示框样式 */
+        #custom-tooltip {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+            transform: translate(15px, 15px); /* Slightly offset from the cursor */
+        }
+        #custom-tooltip.visible {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <!-- 主容器 -->
+    <div class="bg-white rounded-xl shadow-2xl p-8 max-w-4xl w-full text-center">
+
+        <!-- 维护图标 -->
+        <div class="flex justify-center mb-6">
+            <svg class="w-20 h-20 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.223 2.955-1.065z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+        </div>
+
+        <!-- 维护提示信息 -->
+        <div class="bg-red-50 rounded-xl p-6 mb-8 border border-red-200">
+            <h1 class="text-5xl font-extrabold text-gray-800 mb-2">系统维护通知</h1>
+            <p class="text-gray-600 text-lg mb-2">
+                为了提升服务器性能和稳定性，我们正在进行重要的例行维护。
+                <br class="hidden sm:block">
+                维护期间，服务将暂时不可用，由此带来的不便敬请谅解。
+            </p>
+            <p class="text-2xl font-bold text-red-600">
+                预计恢复时间：2025年9月16日 20:30 (北京时间)
+            </p>
+        </div>
+
+
+        <!-- 可访问的网站列表 -->
+        <div class="mt-8 pt-6 border-t border-gray-200">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">您可以访问以下网站：</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- 资源站 -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-medium text-gray-600 border-b border-gray-300 pb-2">资源站</h3>
+                    <div class="grid grid-cols-1 gap-4">
+                        <a href="https://gistwillan.top" target="_blank" data-tooltip-text="进入首页后点击导航栏“更多资源”即可查看国内网盘资源" class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 p-4 rounded-lg shadow-sm hover:shadow-md flex items-center justify-center resource-link">
+                            <span class="text-lg font-medium text-gray-800">资源站首页</span>
+                        </a>
+                        <a href="https://bili.gistwillan.top" target="_blank" data-tooltip-text="资源来源于archive.org 国内访问可能较慢" class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 p-4 rounded-lg shadow-sm hover:shadow-md flex items-center justify-center resource-link">
+                            <span class="text-lg font-medium text-gray-800">B站视频归档</span>
+                        </a>
+                        <a href="https://cdrom.gistwillan.top" target="_blank" data-tooltip-text="资源来源于archive.org 下载资源推荐用多线程下载器，如：Mortix" class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 p-4 rounded-lg shadow-sm hover:shadow-md flex items-center justify-center resource-link">
+                            <span class="text-lg font-medium text-gray-800">CD-ROM资源站</span>
+                        </a>
+                        <a href="https://ipa.gistwillan.top" target="_blank" data-tooltip-text="资源来源于archive.org 下载资源推荐用多线程下载器，如：Mortix" class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 p-4 rounded-lg shadow-sm hover:shadow-md flex items-center justify-center resource-link">
+                            <span class="text-lg font-medium text-gray-800">iPA资源站</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 其他网站 -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-medium text-gray-600 border-b border-gray-300 pb-2">其他网站</h3>
+                    <div class="grid grid-cols-1 gap-4">
+                        <a href="https://blog.gistwillan.top" target="_blank" class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 p-4 rounded-lg shadow-sm hover:shadow-md flex items-center justify-center">
+                            <span class="text-lg font-medium text-gray-800">个人博客</span>
+                        </a>
+                        <a href="https://tools.gistwillan.top" target="_blank" class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 p-4 rounded-lg shadow-sm hover:shadow-md flex items-center justify-center">
+                            <span class="text-lg font-medium text-gray-800">工具网站</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- 自定义提示框 -->
+    <div id="custom-tooltip" class="fixed z-50 px-3 py-2 bg-gray-800 text-white text-sm rounded-lg pointer-events-none"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const resourceLinks = document.querySelectorAll('.resource-link');
+            const tooltip = document.getElementById('custom-tooltip');
+            
+            resourceLinks.forEach(link => {
+                link.addEventListener('mouseenter', (event) => {
+                    const tooltipText = link.getAttribute('data-tooltip-text');
+                    tooltip.textContent = tooltipText;
+                    tooltip.classList.add('visible');
+                    
+                    // Position the tooltip near the cursor
+                    tooltip.style.left = `${event.clientX + 15}px`;
+                    tooltip.style.top = `${event.clientY + 15}px`;
+                });
+
+                link.addEventListener('mouseleave', () => {
+                    tooltip.classList.remove('visible');
+                });
+
+                link.addEventListener('mousemove', (event) => {
+                    // Update position on mousemove for a smoother feel
+                    tooltip.style.left = `${event.clientX + 15}px`;
+                    tooltip.style.top = `${event.clientY + 15}px`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
